@@ -38,7 +38,8 @@ internal fun TeamDetailsRoute(
     viewModel: TeamScreenViewModel = hiltViewModel(),
     onTryAgainClick: () -> Unit,
     onCancelClick: () -> Unit,
-    onBackClick: () -> Unit = {}
+    onBackClick: () -> Unit = {},
+    onShowDetailClick: (RemoteHint) -> Unit
 ) {
     val teamState by viewModel.teamData.collectAsState()
 
@@ -49,7 +50,11 @@ internal fun TeamDetailsRoute(
 
         is UiState.Success -> {
             val data = (teamState as UiState.Success<RemoteTeam>).data
-            TeamDetailsScreen(team = data, onBackClick = onBackClick)
+            TeamDetailsScreen(
+                team = data,
+                onBackClick = onBackClick,
+                onShowDetailClick = onShowDetailClick
+            )
         }
 
         is UiState.Failed -> {
@@ -67,7 +72,8 @@ internal fun TeamDetailsRoute(
 @Composable
 internal fun TeamDetailsScreen(
     team: RemoteTeam = RemoteTeam(),
-    onBackClick: () -> Unit = {}
+    onBackClick: () -> Unit = {},
+    onShowDetailClick: (RemoteHint) -> Unit
 ) {
     AppScreen(
         topBar = {
@@ -119,11 +125,50 @@ internal fun TeamDetailsScreen(
             }
 
 
+            team.mainQuest?.let {
+                if (it.isNotEmpty())
+                    item {
+                        Text(
+                            modifier = Modifier.padding(start = 32.dp),
+                            text = "MAIN HINTS",
+                            style = MaterialTheme.typography.titleSmall.copy(
+                                fontFamily = FontFamily(Font(R.font.orbitron_regular)),
+                                letterSpacing = 2.sp,
+                            )
+                        )
+                    }
+            }
+
+
             // Main Hints Cards
             team.mainQuest?.let {
                 if (it.isNotEmpty())
                     item {
-                        HintsCard(hints = it)
+                        HintsCard(hints = it, onShowDetailClick = onShowDetailClick)
+                    }
+            }
+
+
+            team.sideQuest?.let {
+                if (it.isNotEmpty())
+                    item {
+                        Text(
+                            modifier = Modifier.padding(start = 32.dp),
+                            text = "SIDE HINTS",
+                            style = MaterialTheme.typography.titleSmall.copy(
+                                fontFamily = FontFamily(Font(R.font.orbitron_regular)),
+                                letterSpacing = 2.sp,
+                            )
+                        )
+                    }
+            }
+
+
+            // Side Quest Cards
+            team.sideQuest?.let {
+                if (it.isNotEmpty())
+                    item {
+                        HintsCard(hints = it, onShowDetailClick = onShowDetailClick)
                     }
             }
         }
@@ -151,6 +196,6 @@ private fun TeamDetailsScreenPreview() {
         theme = "This is your theme. sajkca kasj falskhf alk;sflak shklfash klfhaslkhf aslkhfas"
     )
     ScavengerHuntTheme {
-        TeamDetailsScreen(team = mockTeam)
+        TeamDetailsScreen(team = mockTeam) { _ -> }
     }
 }
