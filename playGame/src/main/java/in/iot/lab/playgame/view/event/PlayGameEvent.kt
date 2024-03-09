@@ -11,16 +11,11 @@ sealed class PlayGameEvent {
 
     sealed class ScannerIO : PlayGameEvent() {
 
-        data object CheckScannerAvailability : ScannerIO()
+        data object ResetScanner : PlayGameEvent()
+        data object ScannerFailure : PlayGameEvent()
     }
 
     sealed class NetworkIO : PlayGameEvent() {
-        data object GetTeamData : NetworkIO()
-
-        data object GetHintDetails : NetworkIO()
-    }
-
-    sealed class Helper : PlayGameEvent() {
-        data object ResetScanner : PlayGameEvent()
+        data class UpdatePoints(val hintId: String) : NetworkIO()
     }
 }

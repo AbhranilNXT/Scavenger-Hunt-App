@@ -26,7 +26,11 @@ data class RemoteTeam(
     @SerializedName("isRegistered")
     val isRegistered: Boolean? = null,
     @SerializedName("totalMain")
-    val totalMain: Int? = null,
+    val totalMain: Int = 1,
     @SerializedName("totalSide")
-    val totalSide: Int? = null
+    val totalSide: Int = 1,
+    @SerializedName("theme")
+    val theme: String? = null,
+    @SerializedName("doc")
+    val themeDoc: String? = null
 )

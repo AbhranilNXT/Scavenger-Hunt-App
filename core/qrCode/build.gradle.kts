@@ -60,13 +60,9 @@ dependencies {
 
     // ----------------------------------------------------------------------------
 
-    // Google Bar Code Scanner
-    implementation("com.google.android.gms:play-services-code-scanner:16.1.0")
-
-    // Goggle Play Store Base Service dependency
-    implementation("com.google.android.gms:play-services-base:18.3.0")
-
     // Code Generator Dependency
     implementation("com.google.zxing:core:3.5.1")
 
+    // ZXing Code Scanner Dependency
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 }

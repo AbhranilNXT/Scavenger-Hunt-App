@@ -1,13 +1,13 @@
 package `in`.iot.lab.credits.view.screens
 
 import android.content.res.Configuration
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -18,8 +18,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
@@ -30,7 +28,6 @@ import `in`.iot.lab.credits.data.models.RemoteAboutUs
 import `in`.iot.lab.credits.view.components.CreditsCard
 import `in`.iot.lab.design.R
 import `in`.iot.lab.design.components.AppScreen
-import `in`.iot.lab.design.components.AppTopBar
 import `in`.iot.lab.design.components.ErrorDialog
 import `in`.iot.lab.design.components.LoadingTransition
 import `in`.iot.lab.design.components.TheMatrixHeaderUI
@@ -81,10 +78,7 @@ fun AboutUsScreen(
         onRetryClick()
     }
 
-    AppScreen(
-        topBar = { AppTopBar(headerText = "About Us") },
-        contentAlignment = Alignment.TopCenter
-    ) {
+    AppScreen(contentAlignment = Alignment.TopCenter) {
 
         when (aboutUsData) {
             is UiState.Idle -> {
@@ -122,38 +116,22 @@ private fun AboutUsSuccessScreen(aboutUsData: List<RemoteAboutUs>) {
 
         TheMatrixHeaderUI(false)
 
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
+        Text(
+            modifier = Modifier.fillMaxWidth(),
+            text = "Coded with ❤️ and ☕ by IoT Lab",
+            color = Color(0xFFF1F2EB),
+            fontSize = 16.sp,
+            fontFamily = FontFamily(Font(R.font.inter_regular)),
+            textAlign = TextAlign.Center
+        )
 
+        LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
 
-            item(span = { GridItemSpan(2) }) {
-                Text(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = "Coded with ❤️ and ☕ by IoT Lab",
-                    color = Color(0xFFF1F2EB),
-                    fontSize = 16.sp,
-                    fontFamily = FontFamily(Font(R.font.inter_regular)),
-                    textAlign = TextAlign.Center
-                )
+            items(aboutUsData.size) {
+                CreditsCard(aboutUs = aboutUsData[it])
             }
 
-            item(span = { GridItemSpan(2) }) {
-                Image(
-                    modifier = Modifier.padding(vertical = 8.dp),
-                    painter = painterResource(id = R.drawable.credits_text),
-                    contentDescription = "Credits",
-                    contentScale = ContentScale.Inside
-                )
-            }
-
-            items(aboutUsData) {
-                CreditsCard(aboutUs = it)
-            }
-
-            item(span = { GridItemSpan(2) }) {
+            item {
                 Spacer(modifier = Modifier.height(56.dp))
             }
         }

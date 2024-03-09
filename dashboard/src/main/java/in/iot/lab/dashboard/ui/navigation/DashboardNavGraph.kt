@@ -20,16 +20,17 @@ import `in`.iot.lab.dashboard.R
 import `in`.iot.lab.dashboard.ui.screen.team.TeamRoute
 import `in`.iot.lab.dashboard.ui.screen.team.TeamScreenViewModel
 import `in`.iot.lab.dashboard.ui.screen.team_details.TeamDetailsRoute
+import `in`.iot.lab.dashboard.ui.screen.team_details.components.HintDetailCards
 import `in`.iot.lab.design.animation.navigation.exit.appFadeOutTransition
 import `in`.iot.lab.leaderboard.view.navigation.LEADERBOARD_ROOT_ROUTE
 import `in`.iot.lab.leaderboard.view.navigation.leaderBoardNavGraph
-import `in`.iot.lab.playgame.view.navigation.PLAY_GAME_ROOT_ROUTE
-import `in`.iot.lab.playgame.view.navigation.PlayGameNavGraph
 import `in`.iot.lab.playgame.view.navigation.navigateToPlay
+import `in`.iot.lab.playgame.view.navigation.playGameNavGraph
 
 
 const val TEAM_ROUTE = "team_route"
 const val TEAM_DETAILS_ROUTE = "team_details_route"
+const val TEAM_HINT_DETAILS_ROUTE = "team_hint_details_route"
 
 sealed class DashboardOptions(
     val route: String,
@@ -44,8 +45,8 @@ sealed class DashboardOptions(
 
     data object Credits : DashboardOptions(
         route = ABOUT_US_ROUTE,
-        icon = R.drawable.ic_group_outline,
-        selectedIcon = R.drawable.ic_group
+        icon = R.drawable.ic_info_outline,
+        selectedIcon = R.drawable.ic_info
     )
 
     data object Leaderboard : DashboardOptions(
@@ -53,6 +54,10 @@ sealed class DashboardOptions(
         icon = R.drawable.ic_leaderboard_outline,
         selectedIcon = R.drawable.ic_leaderboard
     )
+
+    companion object {
+        val optionList = listOf(Leaderboard, Team, Credits)
+    }
 }
 
 fun NavController.navigateToTeam(navOptions: NavOptions) =
@@ -105,22 +110,49 @@ internal fun DashboardNavGraph(
                 viewModel = teamViewModel,
                 onBackClick = onBackPressed,
                 onTryAgainClick = teamViewModel::getTeamByUserUid,
-                onCancelClick = { context.finish() }
-            )
-        }
-
-        // Play Game Screen
-        composable(PLAY_GAME_ROOT_ROUTE) {
-            PlayGameNavGraph(
-                onCancelClick = {
-                    navController.navigateToTeam(navOptions {})
+                onCancelClick = { context.finish() },
+                onShowDetailClick = {
+                    teamViewModel.setHint(it)
+                    navController.navigate(TEAM_HINT_DETAILS_ROUTE)
                 }
             )
         }
 
-        aboutUsNavGraph(navController) { }
+        // Hint Details Screen
+        composable(TEAM_HINT_DETAILS_ROUTE) {
+            HintDetailCards(hintData = teamViewModel.hintData)
+        }
+
+        // Play Game Screen
+        playGameNavGraph {
+            navController.navigateToTeam(
+                navOptions {
+                    popUpTo(TEAM_ROUTE) {
+                        inclusive = true
+                    }
+                }
+            )
+        }
+
+        aboutUsNavGraph(navController) {
+            navController.navigateToTeam(
+                navOptions {
+                    popUpTo(TEAM_ROUTE) {
+                        inclusive = true
+                    }
+                }
+            )
+        }
 
         // Leaderboard Screen
-        leaderBoardNavGraph { }
+        leaderBoardNavGraph {
+            navController.navigateToTeam(
+                navOptions {
+                    popUpTo(TEAM_ROUTE) {
+                        inclusive = true
+                    }
+                }
+            )
+        }
     }
 }
