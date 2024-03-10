@@ -2,6 +2,22 @@
 # The Matrix - Scavenger Hunt
 
 An Android Application which was created by IoT lab Android Team for a Scavenger Hunt game organised in KIIT Fest 7.0.
+
+## Table of contents
+- [Badges](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#badges)
+- [About the Application](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#-about-the-application)
+- [Logo](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#logo)
+- [Authors](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#authors)
+- [Screenshots](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#screenshots)
+- [Features](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#features)
+- [Color references](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#color-reference)
+- [Installation](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#installation)
+- [License](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#license)
+- [Feedback](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#feedback)
+- [Platform/Software(s) used to develop this](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#platformssoftwares-used-to-develop-this)
+- [Source Code](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#source-code)
+- [Contributing](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#contributing)
+
 ## Badges
 
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
@@ -73,9 +89,9 @@ Install the Scavenger Hunt Application in your Android phones by downloading the
 If you have any feedback, please reach out to us at abhranilnxt@gmail.com or iot.lab@kiit.ac.in
 
 
-## Platforms/softwares used to develop this:
+## Platforms/softwares(s) used to develop this:
 
-**Android:** Jetpack Compose, MVVM, Kotlin Courotines, Retrofit, ZXing, Material UI, Hilt & Dagger
+**Android:** Android Studio, Jetpack Compose, MVVM, Kotlin Courotines, Retrofit, ZXing, Material UI, Hilt & Dagger
 
 **Backend:** NodeJS
 
