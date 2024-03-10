@@ -3,6 +3,15 @@
 
 An Android Application which was created by IoT lab Android Team for a Scavenger Hunt game organised in KIIT Fest 7.0.
 
+## Badges
+
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+
+
+## 🚀 About the Application
+
+This Application was developed by the IoT Lab Android Team for a Scavenger Hunt Game organised under KIIT Fest 7.0 by the School of Computer Engineering. The game featured numerous hints scattered across the Campus which were to be found by the participants and scanned by the QR Scanner in the App, upon which a follow up hint location would pop up. Main Hints and Side Quest both provided points to the teams, which was shown in the App Leaderboard Screen.
+
 ## Table of contents
 - [Badges](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#badges)
 - [About the Application](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#-about-the-application)
@@ -17,18 +26,6 @@ An Android Application which was created by IoT lab Android Team for a Scavenger
 - [Platform/Software(s) used to develop this](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#platformssoftwares-used-to-develop-this)
 - [Source Code](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#source-code)
 - [Contributing](https://github.com/AbhranilNXT/Scavenger-Hunt-App?tab=readme-ov-file#contributing)
-
-## Badges
-
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-
-
-
-## 🚀 About the Application
-
-This Application was developed by the IoT Lab Android Team for a Scavenger Hunt Game organised under KIIT Fest 7.0 by the School of Computer Engineering. The game featured numerous hints scattered across the Campus which were to be found by the participants and scanned by the QR Scanner in the App, upon which a follow up hint location would pop up. Main Hints and Side Quest both provided points to the teams, which was shown in the App Leaderboard Screen.
-
-
 
 
 ## Logo
