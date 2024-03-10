@@ -1,4 +1,3 @@
-
 # The Matrix - Scavenger Hunt
 
 An Android Application which was created by IoT lab Android Team for a Scavenger Hunt game organised in KIIT Fest 7.0.
