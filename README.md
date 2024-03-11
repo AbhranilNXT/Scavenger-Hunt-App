@@ -87,7 +87,7 @@ If you have any feedback, please reach out to us at abhranilnxt@gmail.com or iot
 
 **Android:** Android Studio, Jetpack Compose, MVVM, Kotlin Courotines, Retrofit, ZXing, Material UI, Hilt & Dagger
 
-**Backend:** NodeJS
+**Backend:** NodeJS, ExpressJS, MongoDB, ngrok
 
 
 ## Source Code
